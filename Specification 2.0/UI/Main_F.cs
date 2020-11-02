@@ -55,7 +55,7 @@ namespace Specification_2._0
 
                 if (modification.ShowDialog() == DialogResult.OK)
                 {
-                    Runner runnerDB = new Runner()
+                    Runner runnerDB = new Runner
                     {
                         Height = Convert.ToDouble(modification.Height_TB.Text.Trim()),                       
                         Weight = Convert.ToDouble(modification.Weight_TB.Text.Trim()),
@@ -67,7 +67,7 @@ namespace Specification_2._0
                     context.Runners.Add(runnerDB);
                     context.SaveChanges();
 
-                    Runners.Add(runnerDB);
+                    Runners.Add(runnerDB);                   
                 }
             }
             catch (Exception ex)
@@ -151,7 +151,7 @@ namespace Specification_2._0
 
         private void Spisok_LB_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (Spisok_LB.SelectedItem != null)
+            if (Spisok_LB.SelectedItem != null) 
             {
                 Runner runnerDB = Spisok_LB.SelectedItem as Runner;
 

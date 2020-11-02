@@ -251,6 +251,7 @@
             this.Height_TB.ReadOnly = true;
             this.Height_TB.Size = new System.Drawing.Size(171, 22);
             this.Height_TB.TabIndex = 4;
+            this.Height_TB.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Weight_TB
             // 
@@ -262,6 +263,7 @@
             this.Weight_TB.ReadOnly = true;
             this.Weight_TB.Size = new System.Drawing.Size(171, 22);
             this.Weight_TB.TabIndex = 6;
+            this.Weight_TB.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Age_TB
             // 
@@ -273,6 +275,7 @@
             this.Age_TB.ReadOnly = true;
             this.Age_TB.Size = new System.Drawing.Size(171, 22);
             this.Age_TB.TabIndex = 8;
+            this.Age_TB.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Name_TB
             // 
@@ -284,6 +287,7 @@
             this.Name_TB.ReadOnly = true;
             this.Name_TB.Size = new System.Drawing.Size(171, 22);
             this.Name_TB.TabIndex = 10;
+            this.Name_TB.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Surname_TB
             // 
@@ -295,6 +299,7 @@
             this.Surname_TB.ReadOnly = true;
             this.Surname_TB.Size = new System.Drawing.Size(171, 22);
             this.Surname_TB.TabIndex = 12;
+            this.Surname_TB.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Ranked_TB
             // 
@@ -306,6 +311,7 @@
             this.Ranked_TB.ReadOnly = true;
             this.Ranked_TB.Size = new System.Drawing.Size(171, 22);
             this.Ranked_TB.TabIndex = 14;
+            this.Ranked_TB.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Spisok_LHeader
             // 
