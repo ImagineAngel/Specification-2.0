@@ -360,6 +360,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(968, 520);
             this.Name = "Main_F";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Список моделей";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_F_FormClosing);
             this.Load += new System.EventHandler(this.Main_F_Load);

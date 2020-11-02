@@ -27,7 +27,7 @@ namespace Specification_2._0.Models
 
         public override string ToString()
         {
-            return Name + " " + Surname + ":" + Ranked.ToString() + " место";
+            return Name + " " + Surname + " " + ":" + " " + Ranked.ToString() + " место";
         }
     }
 }

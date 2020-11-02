@@ -22,15 +22,15 @@ namespace Specification_2._0
 
         private void Modification_F_Load(object sender, EventArgs e)
         {
-            if(IsUpdate)
+            if (IsUpdate)
             {
-                this.Text = "Изменение данных";
-                Header_L.Text = "Изменение данных";
+                this.Text = "Добавление данных";
+                Header_L.Text = "Добавление данных";             
             }
             else
             {
-                this.Text = "Добавление данных";
-                Header_L.Text = "Добавление данных";
+                this.Text = "Изменение данных";
+                Header_L.Text = "Изменение данных";
             }
         }
 
@@ -73,7 +73,7 @@ namespace Specification_2._0
                     if (Ranked_TB.Text.Trim() == "")
                     {
                         Ranked_TB.Focus();
-                        throw new Exception("Вы не ввели занятое место бегуном");
+                        throw new Exception("Вы не ввели место, которое бегун занял на олимпиаде");
                     }
 
                     int R = Convert.ToInt32(Ranked_TB.Text);
@@ -84,15 +84,15 @@ namespace Specification_2._0
                         throw new Exception("Занятое место на олимпиаде должно находиться в диапазоне 1...3");
                     }
                 }
-                catch (FormatException)
+                catch (FormatException Fx)
                 {
                     e.Cancel = true;
-                    MessageBox.Show("Введен неверный формат", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(Fx.Message, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);  
                 }
                 catch (Exception Ex)
                 {
                     e.Cancel = true;
-                    MessageBox.Show(Ex.Message, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(Ex.Message, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);                  
                 }
             }
         }       

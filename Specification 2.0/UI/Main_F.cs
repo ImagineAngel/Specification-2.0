@@ -1,13 +1,7 @@
 ﻿using Specification_2._0.Models;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Data.Entity.Core.Metadata.Edm;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Specification_2._0
@@ -20,19 +14,20 @@ namespace Specification_2._0
         }
 
         private Data.ApplicationContext context;
-        private BindingList<Runner> Runners;         //переходим на BindingList, потому он поддерживает привязку данных
-                                                     //(можем удалять и изменять элементы коллекции
-        private void InitializeBindingListOfRunners()
+        private BindingList<Runner> Runners;         
+
+        private void InitializeBindingListOfRunners()   
         {
             Runners = new BindingList<Runner>(context.Runners.ToList());
            
             Spisok_LB.DataSource = Runners;                      
         }
+
         private void Main_F_Load(object sender, EventArgs e)
         {
             try
             {
-                context = new Data.ApplicationContext();    //создание БД
+                context = new Data.ApplicationContext();
 
                 InitializeBindingListOfRunners();
 
@@ -56,7 +51,7 @@ namespace Specification_2._0
         {
             try
             {
-                Modification_F modification = new Modification_F(false);
+                Modification_F modification = new Modification_F(true);
 
                 if (modification.ShowDialog() == DialogResult.OK)
                 {
@@ -80,11 +75,12 @@ namespace Specification_2._0
                 MessageBox.Show(ex.Message, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
         private void Update_B_Click(object sender, EventArgs e)
         {
             try
             {
-                Modification_F modification = new Modification_F(true);
+                Modification_F modification = new Modification_F(false);
 
                 Runner runnerDB = Spisok_LB.SelectedItem as Runner;
 
@@ -101,8 +97,8 @@ namespace Specification_2._0
                 modification.Ranked_TB.Text = runnerDB.Ranked.ToString();
 
                 if (modification.ShowDialog() == DialogResult.OK)
-                {
-                    Runner runnerContext = context.Runners.FirstOrDefault(m => m.Id == runnerDB.Id);
+                {                 
+                    Runner runnerContext = Spisok_LB.SelectedItem as Runner;
 
                     runnerContext.Height = Convert.ToDouble(modification.Height_TB.Text.Trim());
                     runnerContext.Weight = Convert.ToDouble(modification.Weight_TB.Text.Trim());
@@ -122,6 +118,7 @@ namespace Specification_2._0
                 MessageBox.Show(ex.Message, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
         private void Delete_B_Click(object sender, EventArgs e)
         {
             try
@@ -129,6 +126,11 @@ namespace Specification_2._0
                 if (MessageBox.Show("Вы действительно хотите удалить?", "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                 {
                     Runner runnerDB = Spisok_LB.SelectedItem as Runner;
+
+                    if (runnerDB == null)
+                    {
+                        throw new Exception("Необходимо выбрать объект");
+                    } 
 
                     context.Runners.Remove(runnerDB);
                     context.SaveChanges();
@@ -140,6 +142,11 @@ namespace Specification_2._0
             {
                 MessageBox.Show(ex.Message, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void Exit_B_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
 
         private void Spisok_LB_SelectedValueChanged(object sender, EventArgs e)
@@ -162,20 +169,15 @@ namespace Specification_2._0
             }
             else
             {
-                StateButton(false);
-
                 Height_TB.Clear();
                 Weight_TB.Clear();
                 Age_TB.Clear();
                 Name_TB.Clear();
                 Surname_TB.Clear();
                 Ranked_TB.Clear();
-            }
-        }
 
-        private void Exit_B_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
+                StateButton(false);
+            }
         }
 
         private void Main_F_FormClosing(object sender, FormClosingEventArgs e)

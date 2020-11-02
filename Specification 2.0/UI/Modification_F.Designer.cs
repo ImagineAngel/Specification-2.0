@@ -277,6 +277,7 @@
             this.MinimizeBox = false;
             this.Name = "Modification_F";
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добавление";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Modification_F_FormClosing);
             this.Load += new System.EventHandler(this.Modification_F_Load);
